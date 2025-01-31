@@ -148,14 +148,18 @@
 
     <!-- Flowbite script -->
     <script>
-    /**Open result modal automatically */
+    /**Open result modal automatically after 5 minutes */
+
+    // Note: This is a simple example, you can modify the function to suit your needs. 
+    // Remove setTimeout function if you don't want the modal to show automatically.
     function displayResult() {
         const modal = new Modal(document.getElementById('static-modal'));
         setTimeout(() => {
             modal.show();
-        }, 2000);
+        }, 5000);
     }
 
+    // Call the function
     displayResult();
     </script>
 </body>
