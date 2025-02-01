@@ -60,7 +60,7 @@
         </div>
 
         <div class="p-4">
-          <form id="EnergyCalculatorForm" method="GET">
+          <form id="EnergyCalculatorForm">
             <div class="mb-5">
               <label
                 for="type-of-house"
@@ -70,7 +70,6 @@
 
               <select
                 id="type-of-house"
-                name="type-of-house"
                 class="bg-gray-50 cursor-pointer border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                 required
               >
@@ -103,7 +102,6 @@
 
               <select
                 id="type-of-house"
-                name="type-of-house"
                 class="bg-gray-50 cursor-pointer border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                 required
               >
@@ -198,30 +196,46 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- Flowbite script -->
     <script>
-      const options = {
-        backdrop: "static",
-      };
-      const modal = new Modal(document.getElementById("static-modal"), options);
+      const modal = new Modal(document.getElementById("static-modal"));
       /**Open result modal automatically after 5 minutes */
 
       // Note: This is a simple example, you can modify the function to suit your needs.
       // Remove setTimeout function if you don't want the modal to show automatically.
       function displayResult() {
-        console.log("submited!!!");
+        // setTimeout(() => {
         modal.show();
+        // }, 5000);
       }
 
       // Call the function
-      //   displayResult();
+      displayResult();
     </script>
+
+    <!--  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.1/dist/flowbite.min.js"></script>
     <script>
-      $("form#EnergyCalculatorForm").on("submit", function (e) {
-        e.preventDefault();
-        displayResult();
+      $(document).ready(function () {
+        const modal = new Modal(document.getElementById("static-modal"));
+        function displayResult() {
+          modal.show();
+        }
+
+        // document.getElementById("closeModal")?.addEventListener(function () {
+        //   modal.hide();
+        // });
+        $("#closeModal")?.click(function () {
+          modal.hide();
+        });
+
+        $("form#EnergyCalculatorForm").on("submit", function (e) {
+          e.preventDefault();
+
+          displayResult();
+        });
       });
     </script>
   </body>
